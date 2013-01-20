@@ -27,7 +27,7 @@ class GosuRenderer
         obj['x'] + obj['width'], obj['y'], Gosu::Color::WHITE,
         obj['x'] + obj['width'], obj['y'] + obj['height'], Gosu::Color::WHITE,
         obj['x'], obj['y'] + obj['height'], Gosu::Color::WHITE,
-        Constants::Z_LEVELS['player']
+        Constants::Z_LEVELS['basic_object']
       )
     end
   end

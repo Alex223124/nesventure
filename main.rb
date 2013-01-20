@@ -1,11 +1,12 @@
 APPLICATION_DIR = File.join(['.', 'application'])
 RENDERER_DIR = File.join(['.', 'renderer'])
 STATE_DIR = File.join(['.', 'game_states'])
+
 require 'gosu'
 require 'json'
-require File.join([APPLICATION_DIR, 'game'])
-require File.join([RENDERER_DIR, 'gosu_renderer'])
-require File.join([APPLICATION_DIR, 'constants'])
+
+Dir[File.join([APPLICATION_DIR, '**', '*.rb'])].each{ |f| require f }
+Dir[File.join([RENDERER_DIR, '**', '*.rb'])].each{ |f| require f }
 
 class GameWindow < Gosu::Window
 

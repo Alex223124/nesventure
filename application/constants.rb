@@ -1,5 +1,5 @@
 module Constants
   Z_LEVELS = {
-    'player' => 100
+    'basic_object' => 100
   }
 end

@@ -1,4 +1,3 @@
-require File.join([APPLICATION_DIR, 'game_object'])
 class Game
 
   attr_accessor :objects
@@ -28,7 +27,8 @@ class Game
   def load_game_objects(objects_hash)
     result = []
     objects_hash.each do |object_id, object_info|
-      result << GameObject.new(object_id, object_info)
+      klass = object_info['class'] || 'GameObject'
+      result << Utils.constantize(klass).new(object_id, object_info)
     end
     result
   end
