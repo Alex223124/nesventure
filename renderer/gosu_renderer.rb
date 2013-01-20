@@ -11,8 +11,7 @@ class GosuRenderer
   end
 
   def draw
-    # TODO
-    # use gosu to render @game
+    draw_white
     @game.objects.each do |obj|
       # draw obj
 
@@ -23,11 +22,11 @@ class GosuRenderer
 
       # for now just draw rectangles
       @window.draw_quad(
-        obj['x'], obj['y'], Gosu::Color::WHITE,
-        obj['x'] + obj['width'], obj['y'], Gosu::Color::WHITE,
-        obj['x'] + obj['width'], obj['y'] + obj['height'], Gosu::Color::WHITE,
-        obj['x'], obj['y'] + obj['height'], Gosu::Color::WHITE,
-        Constants::Z_LEVELS['basic_object']
+        obj['x'], obj['y'], Gosu::Color::BLACK,
+        obj['x'] + obj['width'], obj['y'], Gosu::Color::BLACK,
+        obj['x'] + obj['width'], obj['y'] + obj['height'], Gosu::Color::BLACK,
+        obj['x'], obj['y'] + obj['height'], Gosu::Color::BLACK,
+        Constants::ZLevels::BASIC_OBJECT
       )
     end
   end
@@ -47,6 +46,11 @@ class GosuRenderer
   def load_animations
     # TODO
     # make an animation class of some sort and load them
+  end
+
+  def draw_white
+    c = Gosu::Color::WHITE
+    @window.draw_quad(0, 0, c, @window.width, 0, c, @window.width, @window.height, c, 0, @window.height, c, 0)
   end
 
 end

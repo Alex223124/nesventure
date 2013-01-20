@@ -1,13 +1,13 @@
 class Game
 
-  attr_accessor :objects
+  attr_accessor :objects, :space_height, :space_width
 
   def initialize(state_name = 'default')
     load_game_state(state_name)
   end
 
   def load_game_state(state_name)
-    full_json = File.open(File.join([STATE_DIR, "#{state_name}.json"]), 'r') {|f| f.read}
+    full_json = File.read(File.join([STATE_DIR, "#{state_name}.json"]))
     state_hash = JSON.parse(full_json)
 
     @objects = load_game_objects(state_hash['game_objects'])
@@ -28,7 +28,7 @@ class Game
     result = []
     objects_hash.each do |object_id, object_info|
       klass = object_info['class'] || 'GameObject'
-      result << Utils.constantize(klass).new(object_id, object_info)
+      result << Utils.constantize(klass).new(object_id, object_info, self)
     end
     result
   end
