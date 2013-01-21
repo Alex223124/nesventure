@@ -1,8 +1,9 @@
 class Game
 
-  attr_accessor :objects, :space_height, :space_width
+  attr_accessor :objects, :space_height, :space_width, :keys
 
   def initialize(state_name = 'default')
+    @keys = {}
     load_game_state(state_name)
   end
 
